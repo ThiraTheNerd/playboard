@@ -1,0 +1,19 @@
+#heading{
+  color: blue;
+}
+.navbar-brand{
+  font-family: 'Festive', cursive;
+  font-size: 40px;
+  margin-top: 10px;
+}
+.nav-item{
+  text-decoration: none;
+  display: block;
+  padding: 20px;
+}
+#search-form{
+  margin-top: 10px;
+}
+/* div{
+  border: 2px solid black;
+} */
