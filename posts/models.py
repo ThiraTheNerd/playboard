@@ -39,6 +39,12 @@ class ImagePost(models.Model):
     Update the model columns
     '''
     self.save()
+
+  @classmethod
+  def all_images(cls):
+    all_images = cls.objects.all()
+    return all_images
+
   
   @classmethod
   def get_image_by_id(cls,image_id):

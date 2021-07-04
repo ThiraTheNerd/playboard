@@ -1,4 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1 class="text-center" id="heading">Index page</h1>
+<ul id="flex-box">
+  <li>
+    {% for post in posts %}
+    <a data-toggle="modal" data-target="#exampleModalScrollable">
+      <img src="{{post.image.url}}" class="card-img-top" alt="{{post.image_name}} image" id="image_card">
+    </a>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalScrollableTitle">{{post.image_name}}</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            {{post.image_description}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {%empty%}
+    <div class="row">
+      <h2 class="text-center">There No News Items</h2>
+    </div>
+    {% endfor %}
+  </li>
+</ul>
+
 {% endblock %}
