@@ -86,5 +86,7 @@ class CategoryTest(TestCase):
     location = self.imagepost.location
     found_images = ImagePost.filter_by_location(location)
     self.assertEqual(self.imagepost,found_images)
+  def tearDown(self):
+    ImagePost.objects.all().delete()
     
 
