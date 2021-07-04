@@ -19,9 +19,44 @@ class ImagePost(models.Model):
     return self.image_name
 
   def save_imagepost(self):
+    '''
+    Save Image Post instance
+    '''
     self.save()
-
-
   
-
+  def delete_imagepost(self):
+    '''
+    Remove the instance of an imagepost
+    '''
+    self.delete()
   
+  def update_imagepost(self):
+    '''
+    Update the model columns
+    '''
+    self.save()
+  
+  @classmethod
+  def get_image_by_id(cls,image_id):
+    '''
+    Function for acessing a single image post
+    '''
+    images=cls.objects.get(pk = image_id)
+    return images
+
+  @classmethod 
+  def search_image(cls, category):
+    '''
+    Function to search for an image post
+    '''
+    images = cls.objects.filter(image_name=category)
+    return images
+
+  @classmethod 
+  def filter_by_location(cls,location):
+    '''
+    Function to filter based on the imagepost location
+    '''
+    images = cls.objects.filter(location = location)
+    return images
+    

@@ -50,3 +50,41 @@ class CategoryTest(TestCase):
     posts = ImagePost.objects.all()
     self.assertTrue(len(posts) > 0)
 
+  def test_delete_imagepost(self):
+    '''
+    Test the deletion of an instance
+    '''
+    self.imagepost.save_imagepost()
+    self.imagepost.delete_imagepost()
+    posts = ImagePost.objects.all()
+    self.assertTrue(len(posts) == 0)
+
+  # def test_update_imagepost(self):
+  #   '''
+  #   Test the update imagepost method
+  #   '''
+  #   self.imagepost.save_imagepost()
+  #   images = ImagePost.objects.filter(id = 2).update(image_name = 'Valley')
+  #   print(images)
+  #   images.update_imagepost()
+  #   self.assertEqual(self.imagepost.image_name, 'Valley')
+
+  def test_get_image_by_id(self):
+    self.imagepost.save_imagepost()
+    image_id= self.imagepost.pk
+    image_by_id = ImagePost.get_image_by_id(image_id)
+    self.assertEqual(self.imagepost,image_by_id)
+
+  def test_search_image(self):
+    self.imagepost.save_imagepost()
+    name = self.imagepost.image_name
+    found_image = ImagePost.search_image(name)
+    self.assertTrue(len(found_image) == 1)
+  
+  def test_filter_by_location(self):
+    self.imagepost.save_imagepost()
+    location = self.imagepost.location
+    found_images = ImagePost.filter_by_location(location)
+    self.assertEqual(self.imagepost,found_images)
+    
+
