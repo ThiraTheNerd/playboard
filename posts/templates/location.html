@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1 class="text-center" id="heading">Index page</h1>
+
+{% if images %}
 <ul id="flex-box">
   <li>
-    {% for post in posts %}
-    <a href = "#{{post.id}}" data-toggle="modal">
-      <img src="{{post.image.url}}" class="card-img-top" alt="{{post.image_name}} image" id="image_card">
+    {% for image in images %}
+  
+    <a href = "#{{image.id}}" data-toggle="modal">
+      <img src="{{image.image.url}}" class="card-img-top" alt="{{image.image_name}} image" id="image_card">
     </a>
     <!-- Modal -->
-    <div class="modal fade" id="{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="exampleModalScrollableTitle">{{post.image_name}}</h4>
+            <h4 class="modal-title" id="exampleModalScrollableTitle">{{image.image_name}}</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -20,30 +22,25 @@
           <div class="modal-body">
             <div class="row">
               <div class="col-md-8">
-                <img src="{{post.image.url}}" id="image-modal">
+                <img src="{{image.image.url}}" id="image-modal">
               </div>
               <div class="col-md-4">
-                <h5>Posted on : {{post.post_date}}</h5>
-                <span class="badge bg-secondary">{{post.location}}</span>
+                <h5>Posted on : {{image.post_date}}</h5>
+                <span class="badge bg-secondary">{{image.location}}</span>
                 
               </div>
             </div>
             <hr>
-            {{post.image_description}}
+            {{image.image_description}}
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            
           </div>
         </div>
       </div>
     </div>
-    {%empty%}
-    <div class="row">
-      <h2 class="text-center">There No News Items</h2>
-    </div>
     {% endfor %}
   </li>
 </ul>
-
+{% endif %}
 {% endblock %}

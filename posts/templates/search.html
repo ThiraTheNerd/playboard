@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    {% if categories %}
+    <div class="alert alert-primary" role="alert">
+      <h2>Found {{categories|length }} images of {{message}} category</h2>
+    </div>
+    {% else %}
+    <div class="alert alert-warning" role="alert">
+      <h2>Found 0 images in {{message}} category</h2>
+    {% endif %}
+    </div>
+  </div>
+</div>
+{% if categories %}
+<ul id="flex-box">
+  <li>
+    {% for category in categories %}
+    <a href = "#{{category.id}}" data-toggle="modal">
+      <img src="{{category.image.url}}" class="card-img-top" alt="{{category.image_name}} image" id="image_card">
+    </a>
+    <!-- Modal -->
+    <div class="modal fade" id="{{category.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalScrollableTitle">{{category.image_name}}</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-8">
+                <img src="{{category.image.url}}" id="image-modal">
+              </div>
+              <div class="col-md-4">
+                <h5>Posted on : {{category.post_date}}</h5>
+                <span class="badge bg-secondary">{{category.location}}</span>
+                
+              </div>
+            </div>
+            <hr>
+            {{category.image_description}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </li>
+</ul>
+{% endif %}
+{% endblock %}
