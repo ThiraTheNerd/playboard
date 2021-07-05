@@ -32,7 +32,8 @@
             {{post.image_description}}
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary copy-btn" id="{{post.image.url}}" 
+            data-dismiss="modal" onclick="selfCopy(this.id)">Close</button>
             
           </div>
         </div>
