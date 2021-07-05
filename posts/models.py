@@ -17,7 +17,7 @@ class ImagePost(models.Model):
   image_description = models.CharField(max_length=200)
   post_date= models.DateTimeField(auto_now_add = True)
   location = models.ForeignKey(Location , on_delete = models.CASCADE, null=True)
-  category = models.ManyToManyField(category)
+  category = models.ForeignKey(category , on_delete = models.CASCADE, null=True)
 
   def __str__(self):
     return self.image_name
@@ -55,18 +55,18 @@ class ImagePost(models.Model):
     return images
 
   @classmethod 
-  def search_image(cls, category):
+  def search_category(cls, id):
     '''
     Function to search for an image post
     '''
-    images = cls.objects.filter(image_name=category)
+    images = cls.objects.filter(category=id)
     return images
 
   @classmethod 
-  def filter_by_location(cls,location):
+  def filter_by_location(cls):
     '''
     Function to filter based on the imagepost location
     '''
-    images = cls.objects.filter(location = location)
+    images = cls.objects.all()
     return images
     

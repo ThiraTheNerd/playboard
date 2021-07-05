@@ -81,10 +81,11 @@ class CategoryTest(TestCase):
     image_by_id = ImagePost.get_image_by_id(image_id)
     self.assertEqual(self.imagepost,image_by_id)
 
-  def test_search_image(self):
+  def test_search_category(self):
     self.imagepost.save_imagepost()
     name = self.imagepost.image_name
-    found_image = ImagePost.search_image(name)
+    found_image = ImagePost.search_category(name)
+    print(found_image)
     self.assertTrue(len(found_image) == 1)
   
   # def test_filter_by_location(self):
