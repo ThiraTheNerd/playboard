@@ -22,8 +22,8 @@
       </li>
     </ul>
     <div class="navbar navbar-right">
-      <form class="form-inline" id="search-form">
-        <input class="form-control" type="search" placeholder="search">
+      <form class="form-inline" id="search-form" role="search" action = "{% url 'search_results'%}">
+        <input class="form-control" type="text" placeholder="Search Categories" name="category">
         <button class="btn btn-outline-success" type="submit"><span class="glyphicon glyphicon-search"></span></button>
       </form>
     </div>

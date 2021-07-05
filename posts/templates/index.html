@@ -4,11 +4,11 @@
 <ul id="flex-box">
   <li>
     {% for post in posts %}
-    <a data-toggle="modal" data-target="#exampleModalScrollable">
+    <a href = "#{{post.id}}" data-toggle="modal">
       <img src="{{post.image.url}}" class="card-img-top" alt="{{post.image_name}} image" id="image_card">
     </a>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal fade" id="{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -18,6 +18,17 @@
             </button>
           </div>
           <div class="modal-body">
+            <div class="row">
+              <div class="col-md-8">
+                <img src="{{post.image.url}}" id="image-modal">
+              </div>
+              <div class="col-md-4">
+                <h5>Posted on : {{post.post_date}}</h5>
+                <span class="badge bg-secondary">{{post.location}}</span>
+                
+              </div>
+            </div>
+            <hr>
             {{post.image_description}}
           </div>
           <div class="modal-footer">

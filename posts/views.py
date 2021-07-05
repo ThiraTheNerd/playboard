@@ -7,5 +7,4 @@ def index(request):
   Function that displays the homepage of the app
   '''
   posts = ImagePost.all_images()
-  
   return render(request, 'index.html', {"posts" : posts})
