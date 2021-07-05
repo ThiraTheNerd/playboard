@@ -25,6 +25,7 @@
   flex-wrap: wrap;
   text-decoration: none;
   list-style-type: none;
+  margin-left: 60px;
  
 }
 #flex-box li {
