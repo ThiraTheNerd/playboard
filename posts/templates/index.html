@@ -32,9 +32,11 @@
             {{post.image_description}}
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary copy-btn" id="{{post.image.url}}" 
-            data-dismiss="modal" onclick="selfCopy(this.id)">Close</button>
-            
+            <input class="form-control input-md" type="text"
+                   value="http://127.0.0.1:8000{{post.image.url}}" id="{{post.id}}.url">
+            <button class="btn btn-success btn-sm" onclick="copyLink('{{post.id}}.url')">Copy</button>
+            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close
+            </button>
           </div>
         </div>
       </div>
