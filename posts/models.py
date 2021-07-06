@@ -5,11 +5,48 @@ class Location(models.Model):
   loc_name = models.CharField(max_length=50)
   def __str__(self):
     return self.loc_name
+  def save_location(self):
+    '''
+    Save Location instance
+    '''
+    self.save()
+  
+  def delete_location(self):
+    '''
+    Remove the instance of a location
+    '''
+    self.delete()
+  
+  def update_location(self):
+    '''
+    Update the model columns
+    '''
+    self.save()
 
 class category(models.Model):
   cat_name = models.CharField(max_length=30)
   def __str__(self):
     return self.cat_name
+
+  def save_category(self):
+    '''
+    Save category instance
+    '''
+    self.save()
+  
+  def delete_category(self):
+    '''
+    Remove the instance of a category
+    '''
+    self.delete()
+  
+  def update_category(self):
+    '''
+    Update the model columns
+    '''
+    self.save()
+  
+
 
 class ImagePost(models.Model):
   image = models.ImageField(upload_to = 'posts/')

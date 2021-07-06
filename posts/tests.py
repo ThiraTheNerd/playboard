@@ -15,6 +15,21 @@ class CategoryTest(TestCase):
     Test the instation of the category model
     '''
     self.assertTrue(isinstance(self.category,category))
+  def test_save_category(self):
+    '''
+    Test save category method
+    '''
+    self.category.save_category()
+    categories = category.objects.all()
+    self.assertTrue(len(categories) > 0)
+  def test_delete_category(self):
+    '''
+    Test the deletion of an instance
+    '''
+    self.category.save_category()
+    self.category.delete_category()
+    categories = category.objects.all()
+    self.assertTrue(len(categories) == 0)
 
 class LocationTest(TestCase):
   def setUp(self):
@@ -27,13 +42,29 @@ class LocationTest(TestCase):
     Test the instatioation of location model
     '''
     self.assertTrue(isinstance(self.location,Location))
+  def test_save_category(self):
+    '''
+    Test save category method
+    '''
+    self.location.save_location()
+    locations = Location.objects.all()
+    self.assertTrue(len(locations) > 0)
+  
+  def test_delete_location(self):
+    '''
+    Test the deletion of an instance
+    '''
+    self.location.save_location()
+    self.location.delete_location()
+    locations = Location.objects.all()
+    self.assertTrue(len(locations) == 0)
 
-class CategoryTest(TestCase):
+class ImagePostTest(TestCase):
   def setUp(self):
     '''
     Creates an instance of the ImagePost model
     '''
-    self.imagepost = ImagePost(image ='mango.jpeg', image_name='Mountains', 
+    self.imagepost = ImagePost(id = 1, image ='mango.jpeg', image_name='Mountains', 
     image_description= 'This is beautiful')
   
   def test_instance(self):
@@ -83,10 +114,10 @@ class CategoryTest(TestCase):
 
   def test_search_category(self):
     self.imagepost.save_imagepost()
-    name = self.imagepost.image_name
-    found_image = ImagePost.search_category(name)
+    id = self.imagepost.id
+    found_image = ImagePost.search_category(id)
     print(found_image)
-    self.assertTrue(len(found_image) == 1)
+    self.assertTrue(len(found_image) > 1)
   
   # def test_filter_by_location(self):
   #   self.imagepost.save_imagepost()
