@@ -18,7 +18,8 @@
           {% for location in locations %}
           
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="{% url 'find_by_location' %}">{{location.loc_name}}</a></li>
+          <li><a class="dropdown-item" href="{% url 'find_by_location' %}" id="">
+            {{location.loc_name}}</a></li>
           {% endfor%}
         </ul>
       </li>
