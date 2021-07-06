@@ -15,6 +15,9 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,7 +25,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
+# adding config
+cloudinary.config( 
+    cloud_name="playboard", 
+    api_key="742327432827324", 
+    api_secret="TZ48ji3v1taWruQscfUgVpl06C0"
+)
 
 MODE=config("MODE", default="dev")
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -68,7 +76,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'posts',
-    'bootstrap3'
+    'bootstrap3',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [

@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Location(models.Model):
@@ -49,7 +50,7 @@ class category(models.Model):
 
 
 class ImagePost(models.Model):
-  image = models.ImageField(upload_to = 'posts/')
+  image = CloudinaryField('image')
   image_name = models.CharField(max_length=50)
   image_description = models.CharField(max_length=200)
   post_date= models.DateTimeField(auto_now_add = True)
@@ -106,4 +107,3 @@ class ImagePost(models.Model):
     '''
     images = cls.objects.all()
     return images
-    
