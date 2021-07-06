@@ -10,7 +10,7 @@ A Django application that creates a photo gallery for a user basedd on the pictu
 ## Screenshots 
 ###### Home page
  
-<img src="https://user-images.githubusercontent.com/51013354/124569663-d0649480-de4e-11eb-8259-f8ecf27c649a.png">
+<img src="https://user-images.githubusercontent.com/51013354/124587806-ba5fcf80-de60-11eb-8490-c7d74c035edd.png">
  
  ###### Search results
  <img src="https://user-images.githubusercontent.com/51013354/124570736-d5761380-de4f-11eb-8d87-571a2e9cc559.png"> 
