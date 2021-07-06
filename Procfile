@@ -1,0 +1,1 @@
+web: gunicorn playboard.wsgi --log-file -
